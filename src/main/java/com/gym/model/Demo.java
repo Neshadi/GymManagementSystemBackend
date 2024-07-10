@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Demo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id1;
+    private int id;
     private String fullName;
     private String email;
 
