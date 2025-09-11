@@ -20,21 +20,20 @@ public class SecurityConfig {
     @Autowired
     private JwtAuthenticationFilter filter;
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests(auth->auth
+                .authorizeHttpRequests(auth -> auth
+                        // Allow images, CSS, JS
+                        .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
                         .requestMatchers("/account").permitAll()
                         .requestMatchers("/account/login").permitAll()
                         .requestMatchers("/account/register").permitAll()
                         .anyRequest().authenticated()
                 )
-                .csrf(csrf->csrf.disable())
-                .httpBasic(basic->basic.disable())
-                .sessionManagement(session->session.sessionCreationPolicy(
-                        SessionCreationPolicy.STATELESS
-                ))
-                .addFilterBefore(filter,
-                        UsernamePasswordAuthenticationFilter.class)
+                .csrf(csrf -> csrf.disable())
+                .httpBasic(basic -> basic.disable())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
