@@ -25,11 +25,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Allow images, CSS, JS
                         .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
-                        .requestMatchers("/account").permitAll()
-                        .requestMatchers("/account/login").permitAll()
-                        .requestMatchers("/account/register").permitAll()
+                        // Public endpoints
+                        .requestMatchers("/", "/account", "/account/login", "/account/register").permitAll()
+                        // All other requests require authentication
                         .anyRequest().authenticated()
                 )
+
                 .csrf(csrf -> csrf.disable())
                 .httpBasic(basic -> basic.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
