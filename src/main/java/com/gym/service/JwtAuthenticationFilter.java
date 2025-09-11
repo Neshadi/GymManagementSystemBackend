@@ -23,6 +23,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+
+        String path = request.getRequestURI();
+
+        // Skip JWT check for public endpoints
+        if (path.startsWith("/api/auth/") || path.startsWith("/images/")
+                || path.startsWith("/css/") || path.startsWith("/js/")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
         try{
             String bearerToken = request.getHeader("Authorization");
             if(bearerToken==null || !bearerToken.startsWith("Bearer")){
