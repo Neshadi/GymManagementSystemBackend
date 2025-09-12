@@ -26,7 +26,7 @@ public class SecurityConfig {
                         // Allow images, CSS, JS
                         .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
                         // Public endpoints
-                        .requestMatchers("/", "/account", "/account/login", "/account/register","/api/auth/**").permitAll()
+                        .requestMatchers("/", "/account", "/account/login", "/account/register","/user/add").permitAll()
                         // All other requests require authentication
                         .anyRequest().authenticated()
                 )
