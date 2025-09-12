@@ -28,7 +28,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         // Skip JWT check for public endpoints
         if (path.startsWith("/images/")
-                || path.startsWith("/css/") || path.startsWith("/js/")) {
+                || path.startsWith("/css/") || path.startsWith("/js/") || path.equals("/user/add")) {
             filterChain.doFilter(request, response);
             return;
         }
