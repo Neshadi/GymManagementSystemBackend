@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/demo")
-@CrossOrigin(origins = { "http://localhost:3000", "https://Neshadi.github.io/GymManagementSystemFrontend" })
+@CrossOrigin(origins = { "http://localhost:3000", "https://neshadi.github.io" })
 public class DemoController {
 
     @Autowired

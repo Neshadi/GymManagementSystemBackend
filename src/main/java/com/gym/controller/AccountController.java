@@ -21,7 +21,7 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping("/account")
-@CrossOrigin(origins = { "http://localhost:3000", "https://Neshadi.github.io/GymManagementSystemFrontend" })
+@CrossOrigin(origins = { "http://localhost:3000", "https://neshadi.github.io" })
 public class AccountController {
 
     @Autowired
