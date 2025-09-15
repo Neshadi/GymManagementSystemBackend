@@ -12,7 +12,7 @@ public class DemoList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String fullName;
-    @Lob
+
     private String description;
 
 
