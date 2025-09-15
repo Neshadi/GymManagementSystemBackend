@@ -18,6 +18,7 @@ public class DemoListController {
     @GetMapping("/findDemoList")
     @CrossOrigin(origins = "*")
     public List<DemoList> getAllDemos() {
+        System.out.println("➡️ /findDemoList endpoint called");
         return demoListService.getAllDemos();
     }
 }
