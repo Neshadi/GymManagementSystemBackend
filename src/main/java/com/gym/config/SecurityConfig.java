@@ -36,6 +36,8 @@ public class SecurityConfig {
                         .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
                         // Public endpoints
                         .requestMatchers("/", "/account", "/account/login", "/account/register").permitAll()
+                        // ✅ Allow demo list without auth
+                        .requestMatchers("/demoList/**").permitAll()
                         // All other requests require authentication
                         .anyRequest().authenticated()
                 )
